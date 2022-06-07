@@ -3,10 +3,17 @@
     margin: 0;
 }
 
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+}
+
 header {
     background-color: rgb(203, 203, 203);
     display: flex;
     justify-content: center;
+    text-align: center;
     padding: 15px;
 }
 
@@ -14,7 +21,7 @@ form {
     display: grid;
     place-items: center;
     place-content: center;
-    margin-top: 50px;
+    padding: 25px;
     font-size: 2rem;
     gap: 10px;
     grid-template-columns: auto 300px;
@@ -28,7 +35,58 @@ select {
     justify-self: start;
 }
 
-button {
+.submit {
     padding: 8px 24px;
     grid-column: span 2;
+}
+
+.container {
+    display: grid;
+    place-content: center;
+}
+
+.humidity {
+    grid-column: span 2;
+}
+
+.max {
+    grid-column: span 2;
+}
+
+.units {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto 100px auto;
+    place-items: center;
+    position: relative;
+}
+
+.imperial-title,
+.metric-title {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    opacity: 0.3;
+}
+
+.imperial-title.show,
+.metric-title.show {
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+.imperial-unit,
+.metric-unit {
+    font-size: 4rem;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.imperial-unit.show,
+.metric-unit.show {
+    position: absolute;
+    transition: opacity 0.5s ease;
+    opacity: 1;
 }

@@ -14,8 +14,8 @@
         <label for="city">City:</label>
         <input type="text" name="city" id="city">
         <label for="country">Country:</label>
-        <select id="country" name="country" class="form-control">
-            <option value="United States">United States</option>
+        <select id="country" name="country" value="US">
+            <option value="US">US</option>
             <option value="Afghanistan">Afghanistan</option>
             <option value="Åland Islands">Åland Islands</option>
             <option value="Albania">Albania</option>
@@ -262,6 +262,7 @@
         </select>
         <label for="state">State:</label>
         <select name="state" id="state">
+            <option value=""></option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -314,8 +315,15 @@
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
         </select>	
-        <button type="button" class="submit">Submit</button>
+        <button type="button" class="submit">Check Weather</button>
     </form>
-    <div class="container"></div>
+    <div class="container">
+        <div class="units">
+            <button class="imperial-title">Freedom Units</button>
+            <button class="metric-title">Metric Units</button>
+            <div class="imperial-unit"></div>
+            <div class="metric-unit"></div>
+        </div>
+    </div>
 </body>
 </html>
