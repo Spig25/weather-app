@@ -27,25 +27,29 @@ const getWeather = async (city, state, country, units) => {
 }
 
 const displayWeather = async () => {
-  const imperialWeather = await getWeather(cityInput.value, stateInput.value, countryInput.value, `imperial`)
-  const metricWeather = await getWeather(cityInput.value, stateInput.value, countryInput.value, `metric`)
-  imperialDisplay.textContent = `${Math.round(imperialWeather.main.temp)}F`
-  metricDisplay.textContent = `${Math.round(metricWeather.main.temp)}C`
-  humidity.textContent = `Humidity: ${imperialWeather.main.humidity}%`
+  try {
+    const imperialWeather = await getWeather(cityInput.value, stateInput.value, countryInput.value, `imperial`)
+    const metricWeather = await getWeather(cityInput.value, stateInput.value, countryInput.value, `metric`)
+    imperialDisplay.textContent = `${Math.round(imperialWeather.main.temp)}F`
+    metricDisplay.textContent = `${Math.round(metricWeather.main.temp)}C`
+    humidity.textContent = `Humidity: ${imperialWeather.main.humidity}%`
 
-  if (imperialWeather.main.temp > 80) {
-    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=heat`, { mode: `cors` })
-    const gif = await response.json()
-    gifContainer.src = gif.data.images.fixed_height.url
-  }
-  if (imperialWeather.main.temp < 80 && imperialWeather.main.temp > 60) {
-    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=nice`, { mode: `cors` })
-    const gif = await response.json()
-    gifContainer.src = gif.data.images.fixed_height.url
-  } else {
-    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=freezing`, { mode: `cors` })
-    const gif = await response.json()
-    gifContainer.src = gif.data.images.fixed_height.url
+    if (imperialWeather.main.temp > 80) {
+      const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=heat`, { mode: `cors` })
+      const gif = await response.json()
+      gifContainer.src = gif.data.images.fixed_height.url
+    }
+    if (imperialWeather.main.temp < 80 && imperialWeather.main.temp > 60) {
+      const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=nice`, { mode: `cors` })
+      const gif = await response.json()
+      gifContainer.src = gif.data.images.fixed_height.url
+    } else {
+      const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=freezing`, { mode: `cors` })
+      const gif = await response.json()
+      gifContainer.src = gif.data.images.fixed_height.url
+    }
+  } catch (error) {
+    console.log(error)
   }
 }
 
