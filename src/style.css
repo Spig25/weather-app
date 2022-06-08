@@ -94,3 +94,14 @@ select {
     transition: opacity 0.5s ease;
     opacity: 1;
 }
+
+#state,
+#state-label {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#state.show,
+#state-label.show {
+    opacity: 1;
+}

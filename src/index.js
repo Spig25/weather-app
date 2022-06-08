@@ -5,6 +5,7 @@ const button = document.querySelector(`.submit`)
 const cityInput = document.querySelector(`#city`)
 const countryInput = document.querySelector(`#country`)
 const stateInput = document.querySelector(`#state`)
+const stateLabel = document.querySelector(`#state-label`)
 const imperialTitle = document.querySelector(`.imperial-title`)
 const metricTitle = document.querySelector(`.metric-title`)
 const imperialDisplay = document.querySelector(`.imperial-unit`)
@@ -72,4 +73,14 @@ imperialTitle.addEventListener(`click`, () => {
   metricTitle.classList.remove(`show`)
   metricDisplay.classList.remove(`show`)
   imperialDisplay.classList.add(`show`)
+})
+
+document.addEventListener(`click`, () => {
+  if (countryInput.value === `US`) {
+    stateInput.classList.add(`show`)
+    stateLabel.classList.add(`show`)
+  } else {
+    stateInput.classList.remove(`show`)
+    stateLabel.classList.remove(`show`)
+  }
 })
