@@ -38,15 +38,19 @@ const displayWeather = async () => {
       const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=heat`, { mode: `cors` })
       const gif = await response.json()
       gifContainer.src = gif.data.images.fixed_height.url
+      console.log(`hot`)
     }
     if (imperialWeather.main.temp < 80 && imperialWeather.main.temp > 60) {
       const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=nice`, { mode: `cors` })
       const gif = await response.json()
       gifContainer.src = gif.data.images.fixed_height.url
-    } else {
+      console.log(`nice`)
+    }
+    if (imperialWeather.main.temp < 60) {
       const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=freezing`, { mode: `cors` })
       const gif = await response.json()
       gifContainer.src = gif.data.images.fixed_height.url
+      console.log(`cold`)
     }
   } catch (error) {
     console.log(error)
