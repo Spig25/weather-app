@@ -44,14 +44,14 @@ select {
 
 .container {
     display: grid;
-    place-content: center;
+    place-content: space-evenly;
+}
+
+.gif-container {
+    justify-self: center;
 }
 
 .humidity {
-    grid-column: span 2;
-}
-
-.max {
     grid-column: span 2;
 }
 

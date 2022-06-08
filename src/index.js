@@ -10,6 +10,7 @@ const metricTitle = document.querySelector(`.metric-title`)
 const imperialDisplay = document.querySelector(`.imperial-unit`)
 const metricDisplay = document.querySelector(`.metric-unit`)
 const humidity = document.querySelector(`.humidity`)
+const gifContainer = document.querySelector(`.gif-container`)
 
 imperialTitle.classList.add(`show`)
 imperialDisplay.classList.add(`show`)
@@ -31,6 +32,21 @@ const displayWeather = async () => {
   imperialDisplay.textContent = `${Math.round(imperialWeather.main.temp)}F`
   metricDisplay.textContent = `${Math.round(metricWeather.main.temp)}C`
   humidity.textContent = `Humidity: ${imperialWeather.main.humidity}%`
+
+  if (imperialWeather.main.temp > 80) {
+    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=heat`, { mode: `cors` })
+    const gif = await response.json()
+    gifContainer.src = gif.data.images.fixed_height.url
+  }
+  if (imperialWeather.main.temp < 80 && imperialWeather.main.temp > 60) {
+    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=nice`, { mode: `cors` })
+    const gif = await response.json()
+    gifContainer.src = gif.data.images.fixed_height.url
+  } else {
+    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=UE7HVAp1NlaL98z0ydH7FQ2oI6LFW060&s=freezing`, { mode: `cors` })
+    const gif = await response.json()
+    gifContainer.src = gif.data.images.fixed_height.url
+  }
 }
 
 button.addEventListener(`click`, () => {
